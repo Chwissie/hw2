@@ -24,6 +24,9 @@ dependencies {
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 
     implementation group: 'org.apache.commons', name: 'commons-csv', version: '1.9.0'
+
+    runtimeOnly 'org.apache.tomcat.embed:tomcat-embed-jasper:10.1.29' // JSPs
+    runtimeOnly 'org.glassfish.web:jakarta.servlet.jsp.jstl:3.0.0' // JSP tags
 }
 
 tasks.named('test') {
