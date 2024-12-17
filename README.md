@@ -1,2 +1,2 @@
 # hw2
-Coursework
+Zip the folder contained here.
