@@ -1,11 +1,18 @@
 package co2123.hw2.model;
 
+import jakarta.persistence.*;
+
 import java.util.List;
 
+@Entity
 public class Bread {
+    @Id
     private String name;
+    @OneToMany(mappedBy = "id")
     private List<Bakery> bakeries;
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Ingredient> ingredients;
+    @OneToOne
     private Ingredient filling;
 
     public String getName() {return name;}

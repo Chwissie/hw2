@@ -1,11 +1,17 @@
 package co2123.hw2.model;
 
+import jakarta.persistence.*;
+
 import java.util.List;
 
+@Entity
 public class Bakery {
+    @Id
     private int id;
     private String address;
+    @OneToMany(cascade = CascadeType.PERSIST)
     private List<Bread> breads;
+    @ManyToOne
     private Bread newest;
 
     public int getID() {return id;}

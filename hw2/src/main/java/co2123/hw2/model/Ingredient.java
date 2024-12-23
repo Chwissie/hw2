@@ -1,7 +1,12 @@
 package co2123.hw2.model;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+
+@Entity
 public class Ingredient{
 
+    @Id
     private int identifier;
     private int amount;
 
