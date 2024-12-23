@@ -9,7 +9,7 @@ public class Bakery {
     @Id
     private int id;
     private String address;
-    @OneToMany(cascade = CascadeType.PERSIST)
+    @ManyToMany(cascade = CascadeType.PERSIST)
     private List<Bread> breads;
     @ManyToOne
     private Bread newest;
