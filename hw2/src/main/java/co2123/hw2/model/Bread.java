@@ -18,7 +18,7 @@ public class Bread {
     public void setIngredients(List<Ingredient> ingredients) {this.ingredients = ingredients;}
     public void setFilling(Ingredient filling) {this.filling = filling;}
 
-
-
-
+    public String toString(){
+        return name + " " + ingredients + filling;
+    }
 }

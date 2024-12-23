@@ -11,4 +11,7 @@ public class Ingredient{
     public void setIdentifier(int identifier) {this.identifier = identifier;}
     public void setAmount(int amount) {this.amount = amount;}
 
+    public String toString(){
+        return identifier + " " + amount;
+    }
 }
