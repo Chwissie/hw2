@@ -6,6 +6,7 @@ import co2123.hw2.model.Ingredient;
 import co2123.hw2.repo.BakeryRepository;
 import co2123.hw2.repo.BreadRepository;
 import co2123.hw2.repo.IngredientRepository;
+import jakarta.persistence.criteria.CriteriaBuilder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -25,16 +26,15 @@ public class Hw2Application implements CommandLineRunner {
     @Autowired
     private IngredientRepository ingredientRepository;
 
-    public static List<Bakery> bakeryList = new ArrayList<>();
-    public static List<Bread> breadList = new ArrayList<>();
-    public static List<Ingredient> ingredientList = new ArrayList<>();
-
     @Override
     public void run(String... args) throws Exception {
         Bakery bakery = new Bakery();
         Bread bread = new Bread();
         Ingredient ingredient = new Ingredient();
 
+        List<Bakery> bakeryList = (List<Bakery>) bakeryRepository.findAll();
+        List<Bread> breadList = (List<Bread>) breadRepository.findAll();
+        List<Ingredient> ingredientList = (List<Ingredient>) ingredientRepository.findAll();
 
         bakeryList.add(bakery);
         breadList.add(bread);
