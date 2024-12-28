@@ -8,7 +8,7 @@ import java.util.List;
 public class Bread {
     @Id
     private String name;
-    @ManyToMany(mappedBy = "id")
+    @ManyToMany(mappedBy = "breads")
     private List<Bakery> bakeries;
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Ingredient> ingredients;
