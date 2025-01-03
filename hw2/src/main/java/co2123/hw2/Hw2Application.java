@@ -28,35 +28,67 @@ public class Hw2Application implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        Bakery bakery = new Bakery();
-        Bread bread = new Bread();
-        Ingredient ingredient = new Ingredient();
+        Bakery bakery1 = new Bakery();
+        bakery1.setID(1);
+        bakery1.setAddress("Bakery 1");
+        bakery1 = bakeryRepository.save(bakery1);
 
-        List<Bakery> bakeryList = (List<Bakery>) bakeryRepository.findAll();
-        List<Bread> breadList = (List<Bread>) breadRepository.findAll();
-        List<Ingredient> ingredientList = (List<Ingredient>) ingredientRepository.findAll();
+        Bakery bakery2 = new Bakery();
+        bakery2.setID(2);
+        bakery2.setAddress("Bakery 2");
+        bakery2 = bakeryRepository.save(bakery2);
 
-        bakeryList.add(bakery);
-        breadList.add(bread);
-        ingredientList.add(ingredient);
+        Ingredient ingredient1 = new Ingredient();
+        ingredient1.setIdentifier(1);
+        ingredient1.setAmount(69);
+        ingredient1 = ingredientRepository.save(ingredient1);
 
+        Ingredient ingredient2 = new Ingredient();
+        ingredient2.setIdentifier(2);
+        ingredient2.setAmount(20);
+        ingredient2 = ingredientRepository.save(ingredient2);
 
-        bakery.setAddress("here");
-        bakery.setID(1);
-        bakery.setNewest(bread);
-        bakery.setBreads(breadList);
+        Bread bread1 = new Bread();
+        bread1.setIngredients(new ArrayList<>());
+        bread1.getIngredients().add(ingredient1);
+        bread1.setBakeries(new ArrayList<>());
+        bread1.getBakeries().add(bakery1);
+        bread1.setName("Sourdough");
+        bread1.setFilling(ingredient1);
+        bread1 = breadRepository.save(bread1);
 
-        bread.setName("Bread");
-        bread.setFilling(ingredient);
-        bread.setBakeries(bakeryList);
-        bread.setIngredients(ingredientList);
+        Bread bread2 = new Bread();
+        bread2.setIngredients(new ArrayList<>());
+        bread2.getIngredients().add(ingredient2);
+        bread2.setBakeries(new ArrayList<>());
+        bread2.getBakeries().add(bakery2);
+        bread2.setName("Baguette");
+        bread2.setFilling(ingredient2);
+        bread2 = breadRepository.save(bread2);
 
-        ingredient.setAmount(5);
-        ingredient.setIdentifier(1);
+        Ingredient ingredient3 = new Ingredient();
+        ingredient3.setIdentifier(3);
+        ingredient3.setAmount(26);
+        ingredient3 = ingredientRepository.save(ingredient3);
 
-        breadRepository.save(bread);
-        ingredientRepository.save(ingredient);
-        bakeryRepository.save(bakery);
+        Bread bread3 = new Bread();
+        bread3.setIngredients(new ArrayList<>());
+        bread3.getIngredients().add(ingredient3);
+        bread3.setBakeries(new ArrayList<>());
+        bread3.getBakeries().add(bakery1);
+        bread3.setName("Ciabatta");
+        bread3.setFilling(ingredient3);
+        bread3 = breadRepository.save(bread3);
+
+        bakery1.setNewest(bread1);
+        bakery2.setNewest(bread2);
+        bakery1.setBreads(new ArrayList<>());
+        bakery1.getBreads().add(bread1);
+        bakery1.getBreads().add(bread3);
+        bakery2.setBreads(new ArrayList<>());
+        bakery2.getBreads().add(bread2);
+        bakery1 = bakeryRepository.save(bakery1);
+        bakery2 = bakeryRepository.save(bakery2);
     }
     public static void main(String[] args) {
         SpringApplication.run(Hw2Application.class, args);

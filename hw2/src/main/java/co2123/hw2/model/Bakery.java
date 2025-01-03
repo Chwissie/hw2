@@ -7,8 +7,10 @@ import java.util.List;
 @Entity
 public class Bakery {
     @Id
+    @GeneratedValue
     private int id;
     private String address;
+
     @ManyToMany(cascade = CascadeType.PERSIST)
     private List<Bread> breads;
     @ManyToOne
@@ -24,9 +26,13 @@ public class Bakery {
     public void setBreads(List<Bread> breads) {this.breads = breads;}
     public void setNewest(Bread newest) {this.newest = newest;}
 
-    public String toString(){
-        return id + " " + address + " " + breads + " " + newest;
+    @Override
+    public String toString() {
+        return "Bakery{" +
+                "id=" + id +
+                ", address='" + address + '\'' +
+                ", breads=" + breads +
+                ", newest=" + newest +
+                '}';
     }
-
-
 }
